@@ -21,7 +21,7 @@ async function getParties() {
 
 async function getParty(id) {
     try {
-        const response = await fetch(`${API}/${id}`);
+        const response = await fetch(API + "/" + id);
         const result = await response.json()
         selectedParty = result.data
     } catch (error) {
@@ -67,7 +67,7 @@ function PartyDetails() {
         $section.innerHTML = /* html*/ `
             <h3>${selectedParty.name} #${selectedParty.id}</h3>
             <figure>
-                <p class="date">${selectedParty.date}</p>
+                <p class="date">${selectedParty.date.slice(0, 10)}</p>
                 <p class="local">${selectedParty.location}</p>
             </figure>
             <p>${selectedParty.description}</p>
